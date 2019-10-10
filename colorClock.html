@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2019 by TeresaCza (http://jsbin.com/tevihoc/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+<meta name="description" content="Color clock">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100&display=swap" rel="stylesheet"> 
+  <title>Color clock</title>
+<style id="jsbin-css">
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+ position: relative
+}
+
+#clock {
+  color: #fff;  
+  font-family: 'Lato', sans-serif;
+  font-size: 3.5rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+</style>
+</head>
+<body>
+  <div id="clock">12:13:14</div>
+<script id="jsbin-javascript">
+function colorClock() {
+  var date = new Date();
+  var hours = date.getHours();
+ if (hours < 10) {
+  hours = '0' + hours;
+  }
+  var minutes = date.getMinutes();
+  if (minutes < 10) {
+  minutes = '0' + minutes;
+  }
+  var seconds = date.getSeconds();
+  if (seconds < 10) {
+  seconds = '0' + seconds;
+  }
+  var clockFace = hours + ':' + minutes+ ':' + seconds;
+  document.getElementById('clock').innerHTML = clockFace;
+  var helpValue1 = hours + 70;
+  var helpValue2 = minutes + 40;
+  var helpValue3 = seconds + 40;
+  var hexColor = '#' + helpValue2 + helpValue3 + helpValue1;
+  
+  document.body.style.background = hexColor;
+  
+  setTimeout(function() {
+  colorClock();
+}, 1000);
+}
+
+colorClock();
+</script>
+</body>
+</html>
